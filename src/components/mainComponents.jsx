@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import CompartmentComponent from "./train/compartment";
-import { Actions } from "../state/reducer";
+import { Actions, LocalKeys } from "../state/reducer";
 import { useSeats, useSeatsDispatch } from "../state/provider";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -17,7 +17,7 @@ export default function MainComponent() {
     return 7 * r + c + 1;
   }
 
-  function generateGraphLinks() {
+  function generateGraphAdjacencyMatrix() {
     let adj = {};
     for (let i = 0; i < 11; i++) {
       for (let j = 0; j < 7; j++) {
@@ -48,28 +48,23 @@ export default function MainComponent() {
   }
 
   async function fetchData() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve([]);
-      }, 2000);
-    });
+    const allBookedSeats = JSON.parse(localStorage.getItem(LocalKeys.allBookedSeats))
+    const recentBookedSeata = JSON.parse( localStorage.getItem(LocalKeys.recentlyBooked))
+    // console.log('all seats : ',JSON.parse(allBookedSeats))
+
+    dispatch({type:Actions.addSeates , payload: allBookedSeats })
+    dispatch({type:Actions.setRecentlyBookedSeats, payload: recentBookedSeata})
+    
   }
   useEffect(() => {
-    setIsLoading(true);
     fetchData()
-      .then((data) => {
-        dispatch({ type: Actions.addSeates, payload: data });
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
   }, []);
 
   function bfs(start, targetLength, visited) {
     let queue = [start];
     let res = [start];
     visited.push(start);
-    let adjGraph = generateGraphLinks();
+    let adjGraph = generateGraphAdjacencyMatrix();
     while (queue.length > 0) {
       if (res.length == targetLength) return res;
       let v = queue.shift();
