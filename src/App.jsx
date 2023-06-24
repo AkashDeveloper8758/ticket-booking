@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div className='text-xl'>
-        Ticket booking App 🚅 ( UnStop )
+        Ticket booking App 🚅 ( UnStop * )
       </div>
       <AppProvider>
       <MainComponent />
