@@ -286,8 +286,3 @@ export default function MainComponent() {
     </div>
   );
 }
-
-
-//todo: 1. add color market
-//todo: 1. add instructions
-//todo: 1. link to the backend

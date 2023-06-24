@@ -13,4 +13,6 @@ User can book 1-7 tickets at one time
    to run the project,
 1. npm init
 2. npm run dev
+
+site link : ticket-booking-algo.vercel.app
    
