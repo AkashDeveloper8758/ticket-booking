@@ -51,8 +51,9 @@ export default function MainComponent() {
     const allBookedSeats = JSON.parse(localStorage.getItem(LocalKeys.allBookedSeats))
     const recentBookedSeata = JSON.parse( localStorage.getItem(LocalKeys.recentlyBooked))
     // console.log('all seats : ',JSON.parse(allBookedSeats))
-
+    if(allBookedSeats)
     dispatch({type:Actions.addSeates , payload: allBookedSeats })
+    if(recentBookedSeata)
     dispatch({type:Actions.setRecentlyBookedSeats, payload: recentBookedSeata})
     
   }

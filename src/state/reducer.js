@@ -14,6 +14,7 @@ export function AppReducer(state, action) {
     switch (action.type) {
         case Actions.addSeates: {
             const data = action.payload
+            console.log('data : ',data)
             const newData = new Set([...state.booked,...data])
             localStorage.setItem(LocalKeys.allBookedSeats, JSON.stringify([...newData]))
             return {
