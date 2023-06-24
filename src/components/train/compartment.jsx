@@ -44,10 +44,10 @@ export default function CompartmentComponent() {
         </div>
         <div className="p-2"> 1. try to book all seats in one row </div>
         <div className="p-2">
-          2. Try to book them on group close to each other, (using Graph and BFS)
+          2. Try to book them in groups so the seats are close to each other, (using Graph and BFS)
         </div>
         <div className="p-2">
-          3. Try to book them with minimus total gap between seats, ( prefix
+          3. Try to book them with minimum total gap between seats, ( prefix
           sum, sliding window )
         </div>
       </div>
